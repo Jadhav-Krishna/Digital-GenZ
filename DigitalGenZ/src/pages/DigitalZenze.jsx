@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronDown, Zap, Target, Heart, Users, Code, Smartphone, Globe, Star, Sparkles, ArrowRight } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const DigitalZenze = () => {
+  const navigate = useNavigate();
   const [scrollY, setScrollY] = useState(0);
   const [activeSection, setActiveSection] = useState('home');
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -61,23 +63,29 @@ const DigitalZenze = () => {
               Digital GenZ
             </div>
             <div className="hidden md:flex space-x-8">
-              {['home', 'about', 'vision', 'values'].map((item) => (
-                <button
-                  key={item}
-                  onClick={() => scrollToSection(item)}
-                  className={`capitalize relative px-4 py-2 transition-all duration-300 hover:scale-110 ${
-                    activeSection === item 
-                      ? 'text-white' 
-                      : 'text-gray-400 hover:text-white'
-                  }`}
-                >
-                  {item}
-                  {activeSection === item && (
-                    <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-purple-500 to-pink-500 animate-pulse" />
-                  )}
-                </button>
-              ))}
-            </div>
+  {[
+    { label: 'home', href: '/' },
+    { label: 'about', href: '#about-us' },
+    { label: 'services', href: '/services' },
+    { label: 'collaboration', href: 'collaboration' },
+  ].map((item) => (
+    <button
+      key={item.label}
+      onClick={() => navigate(item.href)}
+      className={`capitalize relative px-4 py-2 transition-all duration-300 hover:scale-110 ${
+        activeSection === item.label
+          ? 'text-white'
+          : 'text-gray-400 hover:text-white'
+      }`}
+    >
+      {item.label}
+      {activeSection === item.label && (
+        <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-purple-500 to-pink-500 animate-pulse" />
+      )}
+    </button>
+  ))}
+</div>
+
           </div>
         </div>
       </nav>
@@ -136,7 +144,7 @@ const DigitalZenze = () => {
               🚀 Innovating Tomorrow's Digital Solutions Today
             </p>
             <p className="text-lg text-purple-300 animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
-              Where creativity meets technology ✨
+              Where digital marketing contributes to business growth ✨
             </p>
           </div>
           
@@ -174,50 +182,15 @@ const DigitalZenze = () => {
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="text-center mb-20">
             <h2 className="text-6xl md:text-7xl font-black bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent mb-8 animate-gradient-x">
-              About Digital Zenze
+              About Digital GenZ
             </h2>
             <p className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-              We are a cutting-edge digital company passionate about creating 
+             As a cutting-edge digital marketing platform, we deliver
               <span className="text-purple-400 font-semibold"> innovative solutions </span>
-              that bridge the gap between technology and human experience. 🌟
+             designed to elevate your
+             <span className="text-purple-400 font-semibold"> brand, </span> 
+              connect you with your audience, and drive meaningful business growth 🌟
             </p>
-          </div>
-          
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              { 
-                icon: Code, 
-                title: "Web Development", 
-                desc: "Creating stunning, responsive websites that captivate and engage users with cutting-edge technology.",
-                gradient: "from-purple-500 to-pink-500",
-                emoji: "💻"
-              },
-              { 
-                icon: Smartphone, 
-                title: "Mobile Apps", 
-                desc: "Building powerful mobile applications for iOS and Android platforms with seamless user experiences.",
-                gradient: "from-blue-500 to-cyan-500",
-                emoji: "📱"
-              },
-              { 
-                icon: Globe, 
-                title: "Digital Strategy", 
-                desc: "Comprehensive digital solutions tailored to your business needs with strategic thinking.",
-                gradient: "from-green-500 to-teal-500",
-                emoji: "🌐"
-              }
-            ].map((service, index) => (
-              <div key={index} className="group relative">
-                <div className={`absolute inset-0 bg-gradient-to-r ${service.gradient} rounded-3xl blur opacity-25 group-hover:opacity-50 transition-all duration-300`} />
-                <div className="relative bg-black/50 backdrop-blur-xl p-8 rounded-3xl border border-white/10 hover:border-white/30 transition-all duration-300 hover:scale-105 hover:-translate-y-2">
-                  <div className="text-4xl mb-4">{service.emoji}</div>
-                  <service.icon className="w-12 h-12 text-white mb-6 group-hover:scale-110 transition-transform duration-300" />
-                  <h3 className="text-2xl font-bold text-white mb-6">{service.title}</h3>
-                  <p className="text-gray-300 leading-relaxed">{service.desc}</p>
-                  <div className={`mt-6 h-1 w-0 group-hover:w-full bg-gradient-to-r ${service.gradient} rounded transition-all duration-500`} />
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       </section>
@@ -326,7 +299,7 @@ const DigitalZenze = () => {
               },
               { 
                 icon: Users, 
-                title: "Collaboration", 
+                title: "commitment",
                 desc: "Teamwork and partnership drive our success and innovation.", 
                 gradient: "from-blue-500 to-purple-500",
                 emoji: "🤝"
@@ -362,6 +335,116 @@ const DigitalZenze = () => {
           </div>
         </div>
       </section>
+
+
+      {/*why GenZ */}
+        <section className="py-20 bg-gradient-to-br from-purple-900/30 via-black to-blue-900/30 relative overflow-hidden">
+        <div className="absolute inset-0">
+          <div className="absolute top-10 left-10 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl animate-pulse" />
+          <div className="absolute bottom-10 right-10 w-96 h-96 bg-pink-500/10 rounded-full blur-3xl animate-pulse" />
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl animate-pulse" />
+          {[...Array(25)].map((_, i) => (
+            <FloatingParticle 
+              key={i} 
+              delay={i * 0.4} 
+              size={Math.random() * 3 + 2}
+              color={['bg-purple-400', 'bg-pink-400', 'bg-cyan-400'][Math.floor(Math.random() * 3)]}
+            />
+          ))}
+        </div>
+        
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="text-center mb-20">
+            <h2 className="text-6xl md:text-7xl font-black bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent mb-8 animate-gradient-x">
+              Why Digital GenZ?
+            </h2>
+            <p className="text-2xl text-gray-300 max-w-4xl mx-auto">
+              Discover what sets us apart in the digital landscape 🌟
+            </p>
+          </div>
+          
+          <div className="grid lg:grid-cols-3 gap-8 mb-16">
+            {[
+              {
+                icon: Code,
+                title: "Cutting-Edge Technology",
+                description: "We leverage the latest technologies and frameworks to build future-ready solutions that scale with your business.",
+                gradient: "from-purple-500 to-violet-500",
+                emoji: "⚡",
+                stats: "99.9% Uptime"
+              },
+              {
+                icon: Smartphone,
+                title: "Mobile-First Approach",
+                description: "Every solution we create is designed with mobile users in mind, ensuring seamless experiences across all devices.",
+                gradient: "from-pink-500 to-rose-500",
+                emoji: "📱",
+                stats: "100% Responsive"
+              },
+              {
+                icon: Globe,
+                title: "Global Reach",
+                description: "Our digital solutions help businesses expand their reach globally with localized strategies and universal appeal.",
+                gradient: "from-cyan-500 to-blue-500",
+                emoji: "🌍",
+                stats: "50+ Countries"
+              }
+            ].map((feature, index) => (
+              <div key={index} className="group relative">
+                <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500" />
+                <div className="relative bg-black/40 backdrop-blur-xl rounded-3xl p-8 border border-white/10 group-hover:border-white/30 transition-all duration-500 hover:transform hover:scale-105">
+                  <div className="text-center mb-6">
+                    <div className={`relative w-20 h-20 rounded-2xl bg-gradient-to-r ${feature.gradient} flex items-center justify-center mx-auto mb-4 group-hover:rotate-6 transition-transform duration-300`}>
+                      <feature.icon className="w-10 h-10 text-white" />
+                    </div>
+                    <div className="text-3xl mb-2">{feature.emoji}</div>
+                    <div className={`text-sm font-bold bg-gradient-to-r ${feature.gradient} bg-clip-text text-transparent`}>
+                      {feature.stats}
+                    </div>
+                  </div>
+                  <h3 className="text-2xl font-bold text-white mb-4 text-center">{feature.title}</h3>
+                  <p className="text-gray-300 leading-relaxed text-center">{feature.description}</p>
+                  <div className={`mt-6 h-1 w-0 group-hover:w-full bg-gradient-to-r ${feature.gradient} rounded transition-all duration-500 mx-auto`} />
+                </div>
+              </div>
+            ))}
+          </div>
+          
+          {/* Key Differentiators */}
+          <div className="bg-gradient-to-r from-purple-500/10 via-pink-500/10 to-cyan-500/10 backdrop-blur-2xl rounded-3xl p-12 border border-white/20 hover:border-white/30 transition-all duration-500">
+            <div className="text-center mb-12">
+              <h3 className="text-4xl font-black text-white mb-4">What Makes Us Different? 🚀</h3>
+              <p className="text-xl text-gray-300">We don't just build digital solutions, we craft digital experiences</p>
+            </div>
+            
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {[
+                { icon: "⚡", title: "Lightning Fast", desc: "Optimized for speed and performance" },
+                { icon: "🎨", title: "Creative Design", desc: "Unique, eye-catching visual experiences" },
+                { icon: "🛡️", title: "Secure & Reliable", desc: "Enterprise-grade security standards" },
+                { icon: "📈", title: "Data-Driven", desc: "Analytics-powered decision making" }
+              ].map((item, index) => (
+                <div key={index} className="text-center group hover:scale-110 transition-transform duration-300">
+                  <div className="text-4xl mb-4 group-hover:scale-125 transition-transform duration-300">
+                    {item.icon}
+                  </div>
+                  <h4 className="text-xl font-bold text-white mb-2">{item.title}</h4>
+                  <p className="text-gray-400 text-sm">{item.desc}</p>
+                </div>
+              ))}
+            </div>
+            
+            <div className="text-center mt-12">
+              <div className="inline-flex items-center space-x-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full px-8 py-4 text-white font-bold text-lg hover:scale-110 transition-transform duration-300 cursor-pointer">
+                <Star className="w-6 h-6" />
+                <span>Ready to Transform Your Digital Presence?</span>
+                <Sparkles className="w-6 h-6" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
 
       {/* Footer */}
       <footer className="bg-black border-t border-purple-500/20 py-16 relative overflow-hidden">
