@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronDown, Zap, Target, Heart, Users, Code, Smartphone, Globe, Star, Sparkles, ArrowRight } from 'lucide-react';
+import Faqsection from '../components/HomePageFAQ'
 import { useNavigate } from 'react-router-dom';
 import { HiMenu, HiX } from "react-icons/hi";
 
@@ -492,6 +493,9 @@ const DigitalZenze = () => {
           </div>
         </div>
       </section>
+
+
+      <Faqsection/>
 
 
       {/* Footer */}
