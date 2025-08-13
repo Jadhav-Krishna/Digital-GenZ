@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { 
   Handshake,
   Users,
@@ -12,6 +13,9 @@ import {
 } from 'lucide-react';
 
 const CollaborationPage = () => {
+  const navigate = useNavigate();
+  const [scrollY, setScrollY] = useState(0);
+  const [activeSection, setActiveSection] = useState('');
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [formData, setFormData] = useState({
     name: '',
@@ -40,7 +44,7 @@ const CollaborationPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert('Thanks for reaching out! We\'ll get back to you soon! 🚀');
+    alert('Thanks for reaching out! We\'ll get back to you soon! ');
     setFormData({ name: '', email: '', message: '' });
   };
 
@@ -70,30 +74,65 @@ const CollaborationPage = () => {
       />
 
       {/* Navigation */}
-      <nav className="fixed top-0 w-full z-40 bg-black/80 backdrop-blur-2xl border-b border-purple-500/20">
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex justify-between items-center">
-            <div className="text-3xl font-black bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent animate-pulse">
-              Digital GenZ
-            </div>
-            <div className="hidden md:flex space-x-8">
-              {['home', 'about', 'services', 'collaboration'].map((item) => (
-                <button
-                  key={item}
-                  className={`capitalize relative px-4 py-2 transition-all duration-300 hover:scale-110 ${
-                    item === 'collaboration' ? 'text-white' : 'text-gray-400 hover:text-white'
-                  }`}
-                >
-                  {item}
-                  {item === 'collaboration' && (
-                    <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-purple-500 to-pink-500 animate-pulse" />
-                  )}
-                </button>
-              ))}
-            </div>
-          </div>
-        </div>
-      </nav>
+     <nav
+  className={`fixed top-0 w-full z-40 transition-all duration-500 ${
+    scrollY > 50
+      ? 'bg-black/80 backdrop-blur-2xl border-b border-purple-500/20'
+      : 'bg-transparent'
+  }`}
+>
+  <div className="max-w-7xl mx-auto px-6 py-4">
+    <div className="flex justify-between items-center">
+      {/* Logo */}
+    <div
+  className="cursor-pointer"
+  onClick={() => navigate("/")}
+>
+  <img
+    src="https://res.cloudinary.com/dlk5kntmy/image/upload/v1755083075/logo-removebg-preview_xljgwo.png" // replace with your image path
+    alt="Digital GenZ"
+    className="h-30 w-auto"
+  />
+  </div>
+
+
+      {/* Desktop Menu */}
+      <div className="hidden md:flex space-x-8">
+  {[
+    { label: "home", href: "/" },
+    { label: "about", href: "#about-us" },
+    { label: "services", href: "/services" },
+    { label: "vlog", href: "/vlog" },
+    { label: "collaboration", href: "/collaboration" },
+    { label: "join", href: "https://forms.gle/1DzWKv6dPRy6Dhzf7", external: true },
+  ].map((item) => (
+    <button
+      key={item.label}
+      onClick={() => {
+        if (item.external) {
+          window.open(item.href, "_blank"); // open in new tab
+        } else {
+          navigate(item.href); // use React Router navigation
+        }
+      }}
+      className={`capitalize relative px-4 py-2 transition-all duration-300 hover:scale-110 ${
+        activeSection === item.label
+          ? "text-white"
+          : "text-gray-400 hover:text-white"
+      }`}
+    >
+      {item.label}
+      {activeSection === item.label && !item.external && (
+        <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-purple-500 to-pink-500 animate-pulse" />
+      )}
+    </button>
+  ))}
+</div>
+
+    </div>
+  </div>
+</nav>
+
 
       {/* Main Content */}
       <div className="pt-24 relative overflow-hidden">
@@ -124,10 +163,10 @@ const CollaborationPage = () => {
               </span>
             </h1>
             <p className="text-2xl text-gray-300 mb-4">
-              🤝 Partner with us to create something extraordinary
+              Partner with us to create something extraordinary
             </p>
             <p className="text-lg text-purple-300">
-              Where great ideas meet exceptional execution ✨
+              Where great ideas meet exceptional execution 
             </p>
           </div>
 
@@ -142,11 +181,11 @@ const CollaborationPage = () => {
                 </h2>
                 <div className="space-y-4">
                   {[
-                    "✨ Creative & innovative digital solutions",
-                    "🚀 Fast delivery and reliable support",
-                    "💎 Premium quality at competitive prices",
-                    "🤝 Collaborative approach to every project",
-                    "📈 Proven results for growing businesses"
+                    "Creative & innovative digital solutions",
+                    "Fast delivery and reliable support",
+                    "Premium quality at competitive prices",
+                    "Collaborative approach to every project",
+                    "Proven results for growing businesses"
                   ].map((point, index) => (
                     <div key={index} className="flex items-center text-gray-300 hover:text-white transition-colors duration-300">
                       <div className="w-2 h-2 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full mr-4" />
@@ -251,12 +290,12 @@ const CollaborationPage = () => {
                 Ready to Transform Your Ideas?
               </h2>
               <p className="text-xl text-gray-300 mb-8">
-                Let's create something amazing together! 🚀✨
+                Let's create something amazing together!
               </p>
               <div className="flex justify-center space-x-4">
-                <div className="text-6xl animate-bounce-slow">🤝</div>
-                <div className="text-6xl animate-bounce-slow" style={{ animationDelay: '0.5s' }}>💡</div>
-                <div className="text-6xl animate-bounce-slow" style={{ animationDelay: '1s' }}>🚀</div>
+                <div className="text-6xl animate-bounce-slow"></div>
+                <div className="text-6xl animate-bounce-slow" style={{ animationDelay: '0.5s' }}></div>
+                <div className="text-6xl animate-bounce-slow" style={{ animationDelay: '1s' }}></div>
               </div>
             </div>
           </div>
@@ -270,10 +309,10 @@ const CollaborationPage = () => {
             Digital GenZ
           </div>
           <p className="text-gray-400 mb-6">
-            🚀 Innovating Tomorrow's Digital Solutions Today ✨
+             Innovating Tomorrow's Digital Solutions Today 
           </p>
           <p className="text-gray-500">
-            © 2025 Digital GenZ. All rights reserved. Made with 💜
+            © 2025 Digital GenZ. All rights reserved. Made with 
           </p>
         </div>
       </footer>

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { 
   Code, Smartphone, MessageCircle, Facebook, Instagram, MousePointer, 
   Search, PenTool, Globe, Star, BookOpen, Play, Clock, Users, 
@@ -7,6 +8,9 @@ import {
 } from 'lucide-react';
 
 const ServicesCoursesPage = () => {
+  const navigate = useNavigate();
+    const [scrollY, setScrollY] = useState(0);
+    const [activeSection, setActiveSection] = useState('');
   const [activeTab, setActiveTab] = useState('services');
   const [selectedService, setSelectedService] = useState(null);
   const [selectedCourse, setSelectedCourse] = useState(null);
@@ -30,8 +34,6 @@ const ServicesCoursesPage = () => {
       fullDesc: 'Create stunning, high-performance websites using cutting-edge technologies like React, Next.js, and modern design principles.',
       features: ['Responsive Design', 'Fast Loading', 'SEO Optimized', 'Custom CMS'],
       gradient: 'from-blue-500 to-purple-600',
-      emoji: '💻',
-      price: 'Starting from ₹25,000'
     },
     {
       id: 'mobile-app',
@@ -41,8 +43,6 @@ const ServicesCoursesPage = () => {
       fullDesc: 'Build native and cross-platform mobile applications that deliver exceptional user experiences across all devices.',
       features: ['Native Development', 'Cross-Platform', 'App Store Ready', 'Push Notifications'],
       gradient: 'from-green-500 to-teal-600',
-      emoji: '📱',
-      price: 'Starting from ₹50,000'
     },
     {
       id: 'whatsapp-marketing',
@@ -52,8 +52,6 @@ const ServicesCoursesPage = () => {
       fullDesc: 'Leverage WhatsApp Business API for customer engagement, automated messaging, and business communication.',
       features: ['Business API', 'Automated Responses', 'Broadcast Lists', 'Analytics'],
       gradient: 'from-green-400 to-emerald-600',
-      emoji: '💬',
-      price: 'Starting from ₹15,000'
     },
     {
       id: 'facebook-marketing',
@@ -63,8 +61,7 @@ const ServicesCoursesPage = () => {
       fullDesc: 'Comprehensive Facebook marketing strategies including ads, content creation, and community management.',
       features: ['Ad Campaigns', 'Content Strategy', 'Page Management', 'Analytics'],
       gradient: 'from-blue-600 to-indigo-700',
-      emoji: '👥',
-      price: 'Starting from ₹20,000'
+
     },
     {
       id: 'instagram-marketing',
@@ -74,8 +71,6 @@ const ServicesCoursesPage = () => {
       fullDesc: 'Create compelling Instagram presence with strategic content, stories, reels, and influencer collaborations.',
       features: ['Content Creation', 'Story Management', 'Reels Production', 'Influencer Outreach'],
       gradient: 'from-pink-500 to-rose-600',
-      emoji: '📸',
-      price: 'Starting from ₹18,000'
     },
     {
       id: 'ppc',
@@ -85,8 +80,6 @@ const ServicesCoursesPage = () => {
       fullDesc: 'Maximize your ROI with targeted Google Ads, Bing Ads, and social media advertising campaigns.',
       features: ['Google Ads', 'Keyword Research', 'A/B Testing', 'ROI Optimization'],
       gradient: 'from-yellow-500 to-orange-600',
-      emoji: '🎯',
-      price: 'Starting from ₹30,000'
     },
     {
       id: 'seo',
@@ -107,8 +100,6 @@ const ServicesCoursesPage = () => {
       fullDesc: 'Professional content creation including copywriting, blog posts, social media content, and video scripts.',
       features: ['Blog Writing', 'Social Media Posts', 'Video Scripts', 'Email Content'],
       gradient: 'from-red-500 to-pink-600',
-      emoji: '✍️',
-      price: 'Starting from ₹12,000'
     }
   ];
 
@@ -124,9 +115,6 @@ const ServicesCoursesPage = () => {
       rating: 4.9,
       modules: ['HTML/CSS/JS', 'React/Next.js', 'Node.js/Express', 'Database Design', 'Deployment'],
       gradient: 'from-blue-500 to-cyan-600',
-      emoji: '🌐',
-      price: '₹45,000',
-      originalPrice: '₹65,000'
     },
     {
       id: 'digital-marketing',
@@ -139,9 +127,6 @@ const ServicesCoursesPage = () => {
       rating: 4.8,
       modules: ['SEO/SEM', 'Social Media Marketing', 'PPC Advertising', 'Content Strategy', 'Analytics'],
       gradient: 'from-purple-500 to-pink-600',
-      emoji: '📈',
-      price: '₹35,000',
-      originalPrice: '₹50,000'
     },
     {
       id: 'mobile-dev',
@@ -154,9 +139,6 @@ const ServicesCoursesPage = () => {
       rating: 4.7,
       modules: ['React Native', 'Flutter', 'UI/UX Design', 'API Integration', 'App Store Deployment'],
       gradient: 'from-green-500 to-emerald-600',
-      emoji: '📱',
-      price: '₹55,000',
-      originalPrice: '₹75,000'
     },
     {
       id: 'social-media',
@@ -169,9 +151,6 @@ const ServicesCoursesPage = () => {
       rating: 4.6,
       modules: ['Facebook Ads', 'Instagram Marketing', 'LinkedIn Strategy', 'Content Creation', 'Analytics'],
       gradient: 'from-pink-500 to-rose-600',
-      emoji: '📱',
-      price: '₹25,000',
-      originalPrice: '₹35,000'
     },
     {
       id: 'seo-course',
@@ -184,9 +163,6 @@ const ServicesCoursesPage = () => {
       rating: 4.8,
       modules: ['Technical SEO', 'Link Building', 'Local SEO', 'SEO Tools', 'Content Optimization'],
       gradient: 'from-indigo-500 to-purple-600',
-      emoji: '🔍',
-      price: '₹20,000',
-      originalPrice: '₹30,000'
     },
     {
       id: 'graphic-design',
@@ -199,9 +175,6 @@ const ServicesCoursesPage = () => {
       rating: 4.7,
       modules: ['Photoshop', 'Illustrator', 'Brand Design', 'UI Design', 'Portfolio Building'],
       gradient: 'from-orange-500 to-red-600',
-      emoji: '🎨',
-      price: '₹30,000',
-      originalPrice: '₹42,000'
     }
   ];
 
@@ -230,6 +203,67 @@ const ServicesCoursesPage = () => {
         }}
       />
 
+
+      <nav
+  className={`fixed top-0 w-full z-40 transition-all duration-500 ${
+    scrollY > 50
+      ? 'bg-black/80 backdrop-blur-2xl border-b border-purple-500/20'
+      : 'bg-transparent'
+  }`}
+>
+  <div className="max-w-7xl mx-auto px-6 py-4">
+    <div className="flex justify-between items-center">
+      {/* Logo */}
+     <div
+  className="cursor-pointer"
+  onClick={() => navigate("/")}
+>
+  <img
+    src="https://res.cloudinary.com/dlk5kntmy/image/upload/v1755083075/logo-removebg-preview_xljgwo.png" // replace with your image path
+    alt="Digital GenZ"
+    className="h-30 w-auto"
+  />
+</div>
+
+
+      {/* Desktop Menu */}
+      <div className="hidden md:flex space-x-8">
+  {[
+    { label: "home", href: "/" },
+    { label: "about", href: "#about-us" },
+    { label: "services", href: "/services" },
+    { label: "vlog", href: "/vlog" },
+    { label: "collaboration", href: "/collaboration" },
+    { label: "join", href: "https://forms.gle/1DzWKv6dPRy6Dhzf7", external: true },
+  ].map((item) => (
+    <button
+      key={item.label}
+      onClick={() => {
+        if (item.external) {
+          window.open(item.href, "_blank"); // open in new tab
+        } else {
+          navigate(item.href); // use React Router navigation
+        }
+      }}
+      className={`capitalize relative px-4 py-2 transition-all duration-300 hover:scale-110 ${
+        activeSection === item.label
+          ? "text-white"
+          : "text-gray-400 hover:text-white"
+      }`}
+    >
+      {item.label}
+      {activeSection === item.label && !item.external && (
+        <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-purple-500 to-pink-500 animate-pulse" />
+      )}
+    </button>
+  ))}
+</div>
+
+    </div>
+  </div>
+</nav>
+
+
       {/* Hero Section */}
       <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-purple-900 via-blue-900 to-black">
@@ -254,7 +288,7 @@ const ServicesCoursesPage = () => {
           </h1>
           
           <p className="text-2xl md:text-3xl text-gray-300 mb-12">
-            🚀 Transform Your Skills & Business with Our Expert Solutions
+             Transform Your Skills & Business with Our Expert Solutions
           </p>
           
           {/* Tab Navigation */}
@@ -268,7 +302,7 @@ const ServicesCoursesPage = () => {
                     : 'text-gray-400 hover:text-white'
                 }`}
               >
-                🛠️ Services
+                Services
               </button>
               <button
                 onClick={() => setActiveTab('courses')}
@@ -278,7 +312,7 @@ const ServicesCoursesPage = () => {
                     : 'text-gray-400 hover:text-white'
                 }`}
               >
-                📚 Courses
+                 Courses
               </button>
             </div>
           </div>
@@ -296,7 +330,7 @@ const ServicesCoursesPage = () => {
           <div className="max-w-7xl mx-auto px-6 relative z-10">
             <div className="text-center mb-16">
               <h2 className="text-5xl md:text-6xl font-black bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent mb-6">
-                Our Services 🛠️
+                Our Services 
               </h2>
               <p className="text-xl text-gray-300 max-w-3xl mx-auto">
                 Professional digital solutions to grow your business and establish strong online presence
@@ -321,11 +355,11 @@ const ServicesCoursesPage = () => {
                     
                     <h3 className="text-xl font-bold text-white mb-2 text-center">{service.title}</h3>
                     <p className="text-gray-300 text-sm text-center mb-4">{service.shortDesc}</p>
-                    <div className="text-center">
+                    {/* <div className="text-center">
                       <span className={`text-sm font-bold bg-gradient-to-r ${service.gradient} bg-clip-text text-transparent`}>
                         {service.price}
                       </span>
-                    </div>
+                    </div> */}
                     
                     {selectedService === service.id && (
                       <div className="mt-6 space-y-4 animate-fade-in">
@@ -363,7 +397,7 @@ const ServicesCoursesPage = () => {
           <div className="max-w-7xl mx-auto px-6 relative z-10">
             <div className="text-center mb-16">
               <h2 className="text-5xl md:text-6xl font-black bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent mb-6">
-                Our Courses 📚
+                Our Courses 
               </h2>
               <p className="text-xl text-gray-300 max-w-3xl mx-auto">
                 Master in-demand skills with our comprehensive training programs designed for career success
@@ -385,7 +419,7 @@ const ServicesCoursesPage = () => {
                         <course.icon className="w-7 h-7 text-white" />
                       </div>
                       <div className="text-right">
-                        <div className="text-2xl">{course.emoji}</div>
+                        {/* <div className="text-2xl">{course.emoji}</div> */}
                         <div className="flex items-center space-x-1 mt-1">
                           <Star className="w-4 h-4 text-yellow-400 fill-current" />
                           <span className="text-yellow-400 text-sm font-bold">{course.rating}</span>
@@ -402,10 +436,10 @@ const ServicesCoursesPage = () => {
                         <Clock className="w-4 h-4 text-purple-400" />
                         <span className="text-gray-300">{course.duration}</span>
                       </div>
-                      <div className="flex items-center space-x-2 text-sm">
+                      {/* <div className="flex items-center space-x-2 text-sm">
                         <Users className="w-4 h-4 text-pink-400" />
                         <span className="text-gray-300">{course.students.toLocaleString()} students</span>
-                      </div>
+                      </div> */}
                       <div className="flex items-center space-x-2 text-sm">
                         <Target className="w-4 h-4 text-cyan-400" />
                         <span className="text-gray-300">{course.level}</span>
@@ -413,7 +447,7 @@ const ServicesCoursesPage = () => {
                     </div>
                     
                     {/* Pricing */}
-                    <div className="flex items-center space-x-2 mb-4">
+                    {/* <div className="flex items-center space-x-2 mb-4">
                       <span className={`text-2xl font-bold bg-gradient-to-r ${course.gradient} bg-clip-text text-transparent`}>
                         {course.price}
                       </span>
@@ -421,7 +455,7 @@ const ServicesCoursesPage = () => {
                       <span className="bg-green-500 text-white text-xs px-2 py-1 rounded-full">
                         Save {Math.round((1 - parseInt(course.price.replace(/[₹,]/g, '')) / parseInt(course.originalPrice.replace(/[₹,]/g, ''))) * 100)}%
                       </span>
-                    </div>
+                    </div> */}
                     
                     {selectedCourse === course.id && (
                       <div className="mt-6 space-y-4 animate-fade-in">
@@ -470,7 +504,7 @@ const ServicesCoursesPage = () => {
         
         <div className="max-w-4xl mx-auto text-center px-6 relative z-10">
           <h2 className="text-5xl md:text-6xl font-black bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent mb-8 animate-gradient-x">
-            Ready to Get Started? 🚀
+            Ready to Get Started? 
           </h2>
           <p className="text-2xl text-gray-300 mb-12">
             Join thousands of satisfied clients and students who transformed their digital presence with us
@@ -479,7 +513,7 @@ const ServicesCoursesPage = () => {
           <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6">
             <button className="group relative px-10 py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold rounded-full overflow-hidden transition-all duration-300 hover:scale-110 hover:shadow-2xl hover:shadow-purple-500/50">
               <span className="relative z-10 flex items-center">
-                🛠️ View All Services
+                View All Services
                 <ChevronRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </span>
               <div className="absolute inset-0 bg-gradient-to-r from-pink-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -487,7 +521,7 @@ const ServicesCoursesPage = () => {
             
             <button className="group relative px-10 py-4 border-2 border-white text-white font-bold rounded-full transition-all duration-300 hover:scale-110 hover:bg-white hover:text-black overflow-hidden">
               <span className="relative z-10 flex items-center">
-                📚 Browse Courses
+                 Browse Courses
                 <BookOpen className="ml-2 w-5 h-5" />
               </span>
               <div className="absolute inset-0 bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />

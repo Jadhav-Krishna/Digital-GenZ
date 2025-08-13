@@ -54,41 +54,64 @@ const DigitalZenze = () => {
       />
 
       {/* Navigation */}
-      <nav className={`fixed top-0 w-full z-40 transition-all duration-500 ${
-        scrollY > 50 ? 'bg-black/80 backdrop-blur-2xl border-b border-purple-500/20' : 'bg-transparent'
-      }`}>
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex justify-between items-center">
-            <div className="text-3xl font-black bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent animate-pulse">
-              Digital GenZ
-            </div>
-            <div className="hidden md:flex space-x-8">
+      <nav
+  className={`fixed top-0 w-full z-40 transition-all duration-500 ${
+    scrollY > 50
+      ? 'bg-black/80 backdrop-blur-2xl border-b border-purple-500/20'
+      : 'bg-transparent'
+  }`}
+>
+  <div className="max-w-7xl mx-auto px-6 py-4">
+    <div className="flex justify-between items-center">
+      {/* Logo */}
+      <div
+  className="cursor-pointer"
+  onClick={() => navigate("/")}
+>
+   <img
+    src="https://res.cloudinary.com/dlk5kntmy/image/upload/v1755083075/logo-removebg-preview_xljgwo.png" // replace with your image path
+    alt="Digital GenZ"
+    className="h-30 w-auto"
+  />
+</div>
+
+
+      {/* Desktop Menu */}
+      <div className="hidden md:flex space-x-8">
   {[
-    { label: 'home', href: '/' },
-    { label: 'about', href: '#about-us' },
-    { label: 'services', href: '/services' },
-    { label: 'collaboration', href: 'collaboration' },
+    { label: "home", href: "/" },
+    { label: "about", href: "#about-us" },
+    { label: "services", href: "/services" },
+    { label: "vlog", href: "/vlog" },
+    { label: "collaboration", href: "/collaboration" },
+    { label: "join", href: "https://forms.gle/1DzWKv6dPRy6Dhzf7", external: true },
   ].map((item) => (
     <button
       key={item.label}
-      onClick={() => navigate(item.href)}
+      onClick={() => {
+        if (item.external) {
+          window.open(item.href, "_blank"); // open in new tab
+        } else {
+          navigate(item.href); // use React Router navigation
+        }
+      }}
       className={`capitalize relative px-4 py-2 transition-all duration-300 hover:scale-110 ${
         activeSection === item.label
-          ? 'text-white'
-          : 'text-gray-400 hover:text-white'
+          ? "text-white"
+          : "text-gray-400 hover:text-white"
       }`}
     >
       {item.label}
-      {activeSection === item.label && (
+      {activeSection === item.label && !item.external && (
         <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-purple-500 to-pink-500 animate-pulse" />
       )}
     </button>
   ))}
 </div>
 
-          </div>
-        </div>
-      </nav>
+    </div>
+  </div>
+</nav>
 
       {/* Hero Section */}
       <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
@@ -141,10 +164,10 @@ const DigitalZenze = () => {
           
           <div className="relative mb-12">
             <p className="text-2xl md:text-3xl text-gray-300 mb-4 animate-fade-in-up">
-              🚀 Innovating Tomorrow's Digital Solutions Today
+              Innovating Tomorrow's Digital Solutions Today
             </p>
             <p className="text-lg text-purple-300 animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
-              Where digital marketing contributes to business growth ✨
+              Where digital marketing contributes to business growth 
             </p>
           </div>
           
@@ -189,7 +212,7 @@ const DigitalZenze = () => {
               <span className="text-purple-400 font-semibold"> innovative solutions </span>
              designed to elevate your
              <span className="text-purple-400 font-semibold"> brand, </span> 
-              connect you with your audience, and drive meaningful business growth 🌟
+              connect you with your audience, and drive meaningful business growth 
             </p>
           </div>
         </div>
@@ -216,14 +239,14 @@ const DigitalZenze = () => {
                   <div className="p-4 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl mr-6 group-hover:scale-110 transition-transform duration-300">
                     <Target className="w-8 h-8 text-white" />
                   </div>
-                  <h2 className="text-5xl font-black">Our Vision 🎯</h2>
+                  <h2 className="text-5xl font-black">Our Vision </h2>
                 </div>
                 <div className="relative">
                   <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-2xl blur" />
                   <p className="relative text-xl leading-relaxed p-6 bg-black/30 backdrop-blur-xl rounded-2xl border border-white/10">
                     To be the leading digital innovation company that empowers businesses and individuals 
                     to thrive in the digital age. We envision a world where technology seamlessly 
-                    integrates with human creativity to solve real-world challenges. ✨
+                    integrates with human creativity to solve real-world challenges.
                   </p>
                 </div>
               </div>
@@ -233,14 +256,14 @@ const DigitalZenze = () => {
                   <div className="p-4 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-2xl mr-6 group-hover:scale-110 transition-transform duration-300">
                     <Zap className="w-8 h-8 text-white" />
                   </div>
-                  <h2 className="text-5xl font-black">Our Mission ⚡</h2>
+                  <h2 className="text-5xl font-black">Our Mission</h2>
                 </div>
                 <div className="relative">
                   <div className="absolute inset-0 bg-gradient-to-r from-yellow-500/20 to-orange-500/20 rounded-2xl blur" />
                   <p className="relative text-xl leading-relaxed p-6 bg-black/30 backdrop-blur-xl rounded-2xl border border-white/10">
                     To deliver exceptional digital experiences through innovative technology solutions, 
                     creative design, and strategic thinking. We are committed to helping our clients 
-                    achieve their goals while pushing the boundaries of what's possible. 🚀
+                    achieve their goals while pushing the boundaries of what's possible. 
                   </p>
                 </div>
               </div>
@@ -262,7 +285,7 @@ const DigitalZenze = () => {
                     <span className="text-white font-semibold">Excellence</span>
                   </div>
                   <div className="text-center text-white text-2xl font-bold mt-8">
-                    💡 Innovation • 🎨 Creativity • 🏆 Excellence
+                     Innovation • Creativity •  Excellence
                   </div>
                 </div>
               </div>
@@ -284,7 +307,7 @@ const DigitalZenze = () => {
               Our Core Values
             </h2>
             <p className="text-2xl text-gray-300">
-              The principles that guide everything we do ✨
+              The principles that guide everything we do 
             </p>
           </div>
           
@@ -295,28 +318,24 @@ const DigitalZenze = () => {
                 title: "Passion", 
                 desc: "We love what we do and it shows in every project we deliver.", 
                 gradient: "from-red-500 to-pink-500",
-                emoji: "❤️"
               },
               { 
                 icon: Users, 
                 title: "commitment",
                 desc: "Teamwork and partnership drive our success and innovation.", 
                 gradient: "from-blue-500 to-purple-500",
-                emoji: "🤝"
               },
               { 
                 icon: Zap, 
                 title: "Innovation", 
                 desc: "We constantly push boundaries and embrace new technologies.", 
                 gradient: "from-yellow-500 to-orange-500",
-                emoji: "💡"
               },
               { 
                 icon: Target, 
                 title: "Excellence", 
                 desc: "We strive for perfection in every detail of our work.", 
                 gradient: "from-green-500 to-teal-500",
-                emoji: "🎯"
               }
             ].map((value, index) => (
               <div key={index} className="group text-center hover:scale-110 transition-all duration-500">
@@ -325,7 +344,6 @@ const DigitalZenze = () => {
                   <div className={`relative w-24 h-24 rounded-full bg-gradient-to-r ${value.gradient} flex items-center justify-center mx-auto group-hover:rotate-12 transition-transform duration-300`}>
                     <value.icon className="w-12 h-12 text-white" />
                   </div>
-                  <div className="text-4xl mt-4">{value.emoji}</div>
                 </div>
                 <h3 className="text-3xl font-bold text-white mb-6">{value.title}</h3>
                 <p className="text-gray-300 leading-relaxed">{value.desc}</p>
@@ -359,7 +377,7 @@ const DigitalZenze = () => {
               Why Digital GenZ?
             </h2>
             <p className="text-2xl text-gray-300 max-w-4xl mx-auto">
-              Discover what sets us apart in the digital landscape 🌟
+              Discover what sets us apart in the digital landscape 
             </p>
           </div>
           
@@ -370,7 +388,6 @@ const DigitalZenze = () => {
                 title: "Cutting-Edge Technology",
                 description: "We leverage the latest technologies and frameworks to build future-ready solutions that scale with your business.",
                 gradient: "from-purple-500 to-violet-500",
-                emoji: "⚡",
                 stats: "99.9% Uptime"
               },
               {
@@ -378,7 +395,6 @@ const DigitalZenze = () => {
                 title: "Mobile-First Approach",
                 description: "Every solution we create is designed with mobile users in mind, ensuring seamless experiences across all devices.",
                 gradient: "from-pink-500 to-rose-500",
-                emoji: "📱",
                 stats: "100% Responsive"
               },
               {
@@ -386,7 +402,6 @@ const DigitalZenze = () => {
                 title: "Global Reach",
                 description: "Our digital solutions help businesses expand their reach globally with localized strategies and universal appeal.",
                 gradient: "from-cyan-500 to-blue-500",
-                emoji: "🌍",
                 stats: "50+ Countries"
               }
             ].map((feature, index) => (
@@ -413,21 +428,21 @@ const DigitalZenze = () => {
           {/* Key Differentiators */}
           <div className="bg-gradient-to-r from-purple-500/10 via-pink-500/10 to-cyan-500/10 backdrop-blur-2xl rounded-3xl p-12 border border-white/20 hover:border-white/30 transition-all duration-500">
             <div className="text-center mb-12">
-              <h3 className="text-4xl font-black text-white mb-4">What Makes Us Different? 🚀</h3>
+              <h3 className="text-4xl font-black text-white mb-4">What Makes Us Different?</h3>
               <p className="text-xl text-gray-300">We don't just build digital solutions, we craft digital experiences</p>
             </div>
             
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
               {[
-                { icon: "⚡", title: "Lightning Fast", desc: "Optimized for speed and performance" },
-                { icon: "🎨", title: "Creative Design", desc: "Unique, eye-catching visual experiences" },
-                { icon: "🛡️", title: "Secure & Reliable", desc: "Enterprise-grade security standards" },
-                { icon: "📈", title: "Data-Driven", desc: "Analytics-powered decision making" }
+                {  title: "Lightning Fast", desc: "Optimized for speed and performance" },
+                {  title: "Creative Design", desc: "Unique, eye-catching visual experiences" },
+                {  title: "Secure & Reliable", desc: "Enterprise-grade security standards" },
+                {  title: "Data-Driven", desc: "Analytics-powered decision making" }
               ].map((item, index) => (
                 <div key={index} className="text-center group hover:scale-110 transition-transform duration-300">
-                  <div className="text-4xl mb-4 group-hover:scale-125 transition-transform duration-300">
+                  {/* <div className="text-4xl mb-4 group-hover:scale-125 transition-transform duration-300">
                     {item.icon}
-                  </div>
+                  </div> */}
                   <h4 className="text-xl font-bold text-white mb-2">{item.title}</h4>
                   <p className="text-gray-400 text-sm">{item.desc}</p>
                 </div>
@@ -464,11 +479,11 @@ const DigitalZenze = () => {
             Digital GenZ
           </div>
           <p className="text-gray-400 text-xl mb-8">
-            🚀 Innovating Tomorrow's Digital Solutions Today ✨
+             Innovating Tomorrow's Digital Solutions Today 
           </p>
           <div className="border-t border-gray-700 pt-8">
             <p className="text-gray-500">
-              © 2025 Digital Zenze. All rights reserved. Made with 💜
+              © 2025 Digital Zenze. All rights reserved. Made with 
             </p>
           </div>
         </div>
