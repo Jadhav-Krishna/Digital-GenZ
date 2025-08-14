@@ -71,7 +71,7 @@ const DigitalZenze = () => {
       <img
         src="https://res.cloudinary.com/dlk5kntmy/image/upload/v1755083075/logo-removebg-preview_xljgwo.png"
         alt="Digital GenZ"
-        className="h-30 w-auto"
+        className="h-30 w-auto ml-{-10vw}"
       />
     </div>
 
@@ -126,7 +126,7 @@ const DigitalZenze = () => {
         { label: "home", href: "/" },
         { label: "about", href: "#about-us" },
         { label: "services", href: "/services" },
-        { label: "vlog", href: "/vlog" },
+        // { label: "vlog", href: "/vlog" },
         { label: "collaboration", href: "/collaboration" },
         { label: "join", href: "https://forms.gle/1DzWKv6dPRy6Dhzf7", external: true },
       ].map((item) => (
