@@ -66,9 +66,9 @@ const DigitalZenze = () => {
 >
   <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
     {/* Logo */}
-    <div className="cursor-pointer" onClick={() => navigate("/")}>
+    <div className="cursor-pointer -ml-[13vw] md:-ml-[5vw]" onClick={() => navigate("/")}>
       <img
-        src="https://res.cloudinary.com/dlk5kntmy/image/upload/v1755083075/logo-removebg-preview_xljgwo.png"
+        src="https://res.cloudinary.com/dlk5kntmy/image/upload/v1755105693/logo-03_yyespg.png"
         alt="Digital GenZ"
         className="h-30 w-auto"
       />
