@@ -148,7 +148,7 @@ const DigitalZenze = () => {
 
 
       {/* Hero Section */}
-      <section id="home" className="mt-{30vh} min-h-screen flex items-center justify-center relative overflow-hidden">
+      <section id="home" className="mt-{70vh} min-h-screen flex items-center justify-center relative overflow-hidden">
         {/* Dynamic Background */}
         <div className="absolute inset-0 bg-gradient-to-br from-purple-900 via-blue-900 to-black">
           {/* Animated mesh gradient */}
