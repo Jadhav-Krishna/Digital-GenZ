@@ -352,173 +352,182 @@ const ServicesCoursesPage = () => {
 
       {/* Services Section */}
       {activeTab === 'services' && (
-        <section className="py-20 bg-gradient-to-br from-gray-900 to-black relative overflow-hidden">
-          <div className="absolute inset-0">
-            <div className="absolute top-10 right-10 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl" />
-            <div className="absolute bottom-10 left-10 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl" />
-          </div>
-          
-          <div className="max-w-7xl mx-auto px-6 relative z-10">
-            <div className="text-center mb-16">
-              <h2 className="text-5xl md:text-6xl font-black bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent mb-6">
-                Our Services 
-              </h2>
-              <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-                Professional digital solutions to grow your business and establish strong online presence
-              </p>
-            </div>
+  <section className="py-20 bg-gradient-to-br from-gray-900 to-black relative overflow-hidden">
+    <div className="absolute inset-0">
+      <div className="absolute top-10 right-10 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl" />
+      <div className="absolute bottom-10 left-10 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl" />
+    </div>
+    
+    <div className="max-w-7xl mx-auto px-6 relative z-10">
+      <div className="text-center mb-16">
+        <h2 className="text-5xl md:text-6xl font-black bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent mb-6">
+          Our Services 
+        </h2>
+        <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          Professional digital solutions to grow your business and establish strong online presence
+        </p>
+      </div>
+      
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+        {services.map((service, index) => (
+          <div
+            key={service.id}
+            className="group relative cursor-pointer"
+            onClick={() => setSelectedService(selectedService === service.id ? null : service.id)}
+          >
+            <div className={`absolute inset-0 bg-gradient-to-r ${service.gradient} rounded-2xl blur opacity-20 group-hover:opacity-40 transition-opacity duration-300`} />
             
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-              {services.map((service, index) => (
-                <div
-                  key={service.id}
-                  className="group relative cursor-pointer"
-                  onClick={() => setSelectedService(selectedService === service.id ? null : service.id)}
-                >
-                  <div className={`absolute inset-0 bg-gradient-to-r ${service.gradient} rounded-2xl blur opacity-20 group-hover:opacity-40 transition-opacity duration-300`} />
-                  <div className="relative bg-black/40 backdrop-blur-xl rounded-2xl p-6 border border-white/10 group-hover:border-white/30 transition-all duration-500 hover:transform hover:scale-105">
-                    <div className="text-center mb-6">
-                      <div className={`w-16 h-16 rounded-xl bg-gradient-to-r ${service.gradient} flex items-center justify-center mx-auto mb-4 group-hover:rotate-6 transition-transform duration-300`}>
-                        <service.icon className="w-8 h-8 text-white" />
-                      </div>
-                      <div className="text-2xl mb-2">{service.emoji}</div>
-                    </div>
-                    
-                    <h3 className="text-xl font-bold text-white mb-2 text-center">{service.title}</h3>
-                    <p className="text-gray-300 text-sm text-center mb-4">{service.shortDesc}</p>
-                    {/* <div className="text-center">
-                      <span className={`text-sm font-bold bg-gradient-to-r ${service.gradient} bg-clip-text text-transparent`}>
-                        {service.price}
-                      </span>
-                    </div> */}
-                    
-                    {selectedService === service.id && (
-                      <div className="mt-6 space-y-4 animate-fade-in">
-                        <p className="text-gray-300 text-sm">{service.fullDesc}</p>
-                        <div className="space-y-2">
-                          <h4 className="text-white font-semibold text-sm">Features:</h4>
-                          {service.features.map((feature, i) => (
-                            <div key={i} className="flex items-center space-x-2 text-xs">
-                              <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${service.gradient}`} />
-                              <span className="text-gray-300">{feature}</span>
-                            </div>
-                          ))}
-                        </div>
-                        <button className={`w-full py-2 bg-gradient-to-r ${service.gradient} text-white rounded-lg font-semibold text-sm hover:scale-105 transition-transform duration-300`}>
-                          Get Started
-                        </button>
-                      </div>
-                    )}
-                  </div>
+            {/* Card Content */}
+            <div className="relative bg-black/40 backdrop-blur-xl rounded-2xl p-6 border border-white/10 group-hover:border-white/30 transition-all duration-500 hover:transform hover:scale-105">
+              <div className="text-center mb-6">
+                <div className={`w-16 h-16 rounded-xl bg-gradient-to-r ${service.gradient} flex items-center justify-center mx-auto mb-4 group-hover:rotate-6 transition-transform duration-300`}>
+                  <service.icon className="w-8 h-8 text-white" />
                 </div>
-              ))}
+                <div className="text-2xl mb-2">{service.emoji}</div>
+              </div>
+              
+              <h3 className="text-xl font-bold text-white mb-2 text-center">{service.title}</h3>
+              <p className="text-gray-300 text-sm text-center mb-4">{service.shortDesc}</p>
+
+              {selectedService === service.id && (
+                <div className="mt-6 space-y-4 animate-fade-in">
+                  <p className="text-gray-300 text-sm">{service.fullDesc}</p>
+                  <div className="space-y-2">
+                    <h4 className="text-white font-semibold text-sm">Features:</h4>
+                    {service.features.map((feature, i) => (
+                      <div key={i} className="flex items-center space-x-2 text-xs">
+                        <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${service.gradient}`} />
+                        <span className="text-gray-300">{feature}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <button className={`w-full py-2 bg-gradient-to-r ${service.gradient} text-white rounded-lg font-semibold text-sm hover:scale-105 transition-transform duration-300`}>
+                    Get Started
+                  </button>
+                </div>
+              )}
+            </div>
+
+            {/* Overlay "Coming Soon" */}
+            <div className="absolute inset-0 bg-black/70 rounded-2xl flex items-center justify-center">
+              <span className="text-white text-lg font-bold">Coming Soon</span>
             </div>
           </div>
-        </section>
-      )}
+        ))}
+      </div>
+    </div>
+  </section>
+)}
+
 
       {/* Courses Section */}
       {activeTab === 'courses' && (
-        <section className="py-20 bg-gradient-to-br from-gray-900 to-black relative overflow-hidden">
-          <div className="absolute inset-0">
-            <div className="absolute top-10 right-10 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl" />
-            <div className="absolute bottom-10 left-10 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl" />
-          </div>
-          
-          <div className="max-w-7xl mx-auto px-6 relative z-10">
-            <div className="text-center mb-16">
-              <h2 className="text-5xl md:text-6xl font-black bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent mb-6">
-                Our Courses 
-              </h2>
-              <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-                Master in-demand skills with our comprehensive training programs designed for career success
-              </p>
-            </div>
-            
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {courses.map((course, index) => (
-                <div
-                  key={course.id}
-                  className="group relative cursor-pointer"
-                  onClick={() => setSelectedCourse(selectedCourse === course.id ? null : course.id)}
-                >
-                  <div className={`absolute inset-0 bg-gradient-to-r ${course.gradient} rounded-2xl blur opacity-20 group-hover:opacity-40 transition-opacity duration-300`} />
-                  <div className="relative bg-black/40 backdrop-blur-xl rounded-2xl p-6 border border-white/10 group-hover:border-white/30 transition-all duration-500 hover:transform hover:scale-105">
-                    {/* Course Header */}
-                    <div className="flex justify-between items-start mb-4">
-                      <div className={`w-14 h-14 rounded-xl bg-gradient-to-r ${course.gradient} flex items-center justify-center group-hover:rotate-6 transition-transform duration-300`}>
-                        <course.icon className="w-7 h-7 text-white" />
-                      </div>
-                      <div className="text-right">
-                        {/* <div className="text-2xl">{course.emoji}</div> */}
-                        <div className="flex items-center space-x-1 mt-1">
-                          <Star className="w-4 h-4 text-yellow-400 fill-current" />
-                          <span className="text-yellow-400 text-sm font-bold">{course.rating}</span>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <h3 className="text-xl font-bold text-white mb-2">{course.title}</h3>
-                    <p className="text-gray-300 text-sm mb-4">{course.shortDesc}</p>
-                    
-                    {/* Course Info */}
-                    <div className="space-y-2 mb-4">
-                      <div className="flex items-center space-x-2 text-sm">
-                        <Clock className="w-4 h-4 text-purple-400" />
-                        <span className="text-gray-300">{course.duration}</span>
-                      </div>
-                      {/* <div className="flex items-center space-x-2 text-sm">
-                        <Users className="w-4 h-4 text-pink-400" />
-                        <span className="text-gray-300">{course.students.toLocaleString()} students</span>
-                      </div> */}
-                      <div className="flex items-center space-x-2 text-sm">
-                        <Target className="w-4 h-4 text-cyan-400" />
-                        <span className="text-gray-300">{course.level}</span>
-                      </div>
-                    </div>
-                    
-                    {/* Pricing */}
-                    {/* <div className="flex items-center space-x-2 mb-4">
-                      <span className={`text-2xl font-bold bg-gradient-to-r ${course.gradient} bg-clip-text text-transparent`}>
-                        {course.price}
-                      </span>
-                      <span className="text-gray-500 line-through text-sm">{course.originalPrice}</span>
-                      <span className="bg-green-500 text-white text-xs px-2 py-1 rounded-full">
-                        Save {Math.round((1 - parseInt(course.price.replace(/[₹,]/g, '')) / parseInt(course.originalPrice.replace(/[₹,]/g, ''))) * 100)}%
-                      </span>
-                    </div> */}
-                    
-                    {selectedCourse === course.id && (
-                      <div className="mt-6 space-y-4 animate-fade-in">
-                        <div>
-                          <h4 className="text-white font-semibold text-sm mb-2">Course Modules:</h4>
-                          <div className="space-y-2">
-                            {course.modules.map((module, i) => (
-                              <div key={i} className="flex items-center space-x-2 text-sm">
-                                <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${course.gradient}`} />
-                                <span className="text-gray-300">{module}</span>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                        <div className="flex space-x-2">
-                          <button className={`flex-1 py-2 bg-gradient-to-r ${course.gradient} text-white rounded-lg font-semibold text-sm hover:scale-105 transition-transform duration-300 flex items-center justify-center`}>
-                            <Play className="w-4 h-4 mr-1" />
-                            Enroll Now
-                          </button>
-                          <button className="px-4 py-2 border border-white/20 text-white rounded-lg text-sm hover:bg-white/10 transition-all duration-300">
-                            Preview
-                          </button>
-                        </div>
-                      </div>
-                    )}
+  <section className="py-20 bg-gradient-to-br from-gray-900 to-black relative overflow-hidden">
+    <div className="absolute inset-0">
+      <div className="absolute top-10 right-10 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl" />
+      <div className="absolute bottom-10 left-10 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl" />
+    </div>
+    
+    <div className="max-w-7xl mx-auto px-6 relative z-10">
+      <div className="text-center mb-16">
+        <h2 className="text-5xl md:text-6xl font-black bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent mb-6">
+          Our Courses 
+        </h2>
+        <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          Master in-demand skills with our comprehensive training programs designed for career success
+        </p>
+      </div>
+      
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {courses.map((course, index) => (
+          <div
+            key={course.id}
+            className="group relative cursor-pointer"
+            onClick={() => setSelectedCourse(selectedCourse === course.id ? null : course.id)}
+          >
+            <div className={`absolute inset-0 bg-gradient-to-r ${course.gradient} rounded-2xl blur opacity-20 group-hover:opacity-40 transition-opacity duration-300`} />
+            <div className="relative bg-black/40 backdrop-blur-xl rounded-2xl p-6 border border-white/10 group-hover:border-white/30 transition-all duration-500 hover:transform hover:scale-105">
+              {/* Course Header */}
+              <div className="flex justify-between items-start mb-4">
+                <div className={`w-14 h-14 rounded-xl bg-gradient-to-r ${course.gradient} flex items-center justify-center group-hover:rotate-6 transition-transform duration-300`}>
+                  <course.icon className="w-7 h-7 text-white" />
+                </div>
+                <div className="text-right">
+                  {/* <div className="text-2xl">{course.emoji}</div> */}
+                  <div className="flex items-center space-x-1 mt-1">
+                    <Star className="w-4 h-4 text-yellow-400 fill-current" />
+                    <span className="text-yellow-400 text-sm font-bold">{course.rating}</span>
                   </div>
                 </div>
-              ))}
+              </div>
+              
+              <h3 className="text-xl font-bold text-white mb-2">{course.title}</h3>
+              <p className="text-gray-300 text-sm mb-4">{course.shortDesc}</p>
+              
+              {/* Course Info */}
+              <div className="space-y-2 mb-4">
+                <div className="flex items-center space-x-2 text-sm">
+                  <Clock className="w-4 h-4 text-purple-400" />
+                  <span className="text-gray-300">{course.duration}</span>
+                </div>
+                {/* <div className="flex items-center space-x-2 text-sm">
+                  <Users className="w-4 h-4 text-pink-400" />
+                  <span className="text-gray-300">{course.students.toLocaleString()} students</span>
+                </div> */}
+                <div className="flex items-center space-x-2 text-sm">
+                  <Target className="w-4 h-4 text-cyan-400" />
+                  <span className="text-gray-300">{course.level}</span>
+                </div>
+              </div>
+              
+              {/* Pricing */}
+              {/* <div className="flex items-center space-x-2 mb-4">
+                <span className={`text-2xl font-bold bg-gradient-to-r ${course.gradient} bg-clip-text text-transparent`}>
+                  {course.price}
+                </span>
+                <span className="text-gray-500 line-through text-sm">{course.originalPrice}</span>
+                <span className="bg-green-500 text-white text-xs px-2 py-1 rounded-full">
+                  Save {Math.round((1 - parseInt(course.price.replace(/[₹,]/g, '')) / parseInt(course.originalPrice.replace(/[₹,]/g, ''))) * 100)}%
+                </span>
+              </div> */}
+              
+              {selectedCourse === course.id && (
+                <div className="mt-6 space-y-4 animate-fade-in">
+                  <div>
+                    <h4 className="text-white font-semibold text-sm mb-2">Course Modules:</h4>
+                    <div className="space-y-2">
+                      {course.modules.map((module, i) => (
+                        <div key={i} className="flex items-center space-x-2 text-sm">
+                          <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${course.gradient}`} />
+                          <span className="text-gray-300">{module}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="flex space-x-2">
+                    <button className={`flex-1 py-2 bg-gradient-to-r ${course.gradient} text-white rounded-lg font-semibold text-sm hover:scale-105 transition-transform duration-300 flex items-center justify-center`}>
+                      <Play className="w-4 h-4 mr-1" />
+                      Enroll Now
+                    </button>
+                    <button className="px-4 py-2 border border-white/20 text-white rounded-lg text-sm hover:bg-white/10 transition-all duration-300">
+                      Preview
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Overlay "Coming Soon" */}
+            <div className="absolute inset-0 bg-black/70 rounded-2xl flex items-center justify-center">
+              <span className="text-white text-lg font-bold">Coming Soon</span>
             </div>
           </div>
-        </section>
-      )}
+        ))}
+      </div>
+    </div>
+  </section>
+)}
+
 
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-purple-900 via-blue-900 to-black relative overflow-hidden">
