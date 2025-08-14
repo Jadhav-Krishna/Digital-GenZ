@@ -71,7 +71,7 @@ const DigitalZenze = () => {
       <img
         src="https://res.cloudinary.com/dlk5kntmy/image/upload/v1755083075/logo-removebg-preview_xljgwo.png"
         alt="Digital GenZ"
-        className="h-{10vh} w-auto"
+        className="h-{2vh} w-auto"
       />
     </div>
 
