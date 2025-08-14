@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronDown, Zap, Target, Heart, Users, Code, Smartphone, Globe, Star, Sparkles, ArrowRight } from 'lucide-react';
+import { ChevronDown, Zap, Target, Heart, Users, Star, Sparkles, ArrowRight, DollarSign, BarChart3} from 'lucide-react';
 import Faqsection from '../components/HomePageFAQ'
 import { useNavigate } from 'react-router-dom';
 import { HiMenu, HiX } from "react-icons/hi";
-
 
 const DigitalZenze = () => {
   const navigate = useNavigate();
@@ -58,97 +57,97 @@ const DigitalZenze = () => {
       />
 
       {/* Navigation */}
-    <nav
-            className={`fixed top-0 w-full z-40 transition-all duration-500 ${
-              scrollY > 50
-                ? "bg-black/80 backdrop-blur-2xl border-b border-purple-500/20"
-                : "bg-transparent"
-            }`}
-          >
-            <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-              {/* Logo */}
-              <div className="cursor-pointer" onClick={() => navigate("/")}>
-                <img
-                  src="https://res.cloudinary.com/dlk5kntmy/image/upload/v1755083075/logo-removebg-preview_xljgwo.png"
-                  alt="Digital GenZ"
-                  className="h-30 w-auto"
-                />
-              </div>
-          
-              {/* Desktop Menu */}
-              <div className="hidden md:flex space-x-8">
-                {[
-                  { label: "home", href: "/" },
-                  { label: "about", href: "#about-us" },
-                  { label: "services", href: "/services" },
-                  // { label: "vlog", href: "/vlog" },
-                  { label: "collaboration", href: "/collaboration" },
-                  { label: "join", href: "https://forms.gle/1DzWKv6dPRy6Dhzf7", external: true },
-                ].map((item) => (
-                  <button
-                    key={item.label}
-                    onClick={() => {
-                      if (item.external) {
-                        window.open(item.href, "_blank");
-                      } else {
-                        navigate(item.href);
-                      }
-                    }}
-                    className={`capitalize relative px-4 py-2 transition-all duration-300 hover:scale-110 ${
-                      activeSection === item.label
-                        ? "text-white"
-                        : "text-gray-400 hover:text-white"
-                    }`}
-                  >
-                    {item.label}
-                    {activeSection === item.label && !item.external && (
-                      <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-purple-500 to-pink-500 animate-pulse" />
-                    )}
-                  </button>
-                ))}
-              </div>
-          
-              {/* Mobile Menu Button */}
-              <div className="md:hidden">
-                <button
-                  onClick={() => setMenuOpen(!menuOpen)}
-                  className="text-white text-3xl focus:outline-none"
-                >
-                  {menuOpen ? <HiX /> : <HiMenu />}
-                </button>
-              </div>
-            </div>
-          
-            {/* Mobile Menu */}
-            {menuOpen && (
-              <div className="md:hidden bg-black/90 backdrop-blur-2xl px-6 py-4 flex flex-col space-y-4">
-                {[
-                  { label: "home", href: "/" },
-                  { label: "about", href: "#about-us" },
-                  { label: "services", href: "/services" },
-                  { label: "vlog", href: "/vlog" },
-                  { label: "collaboration", href: "/collaboration" },
-                  { label: "join", href: "https://forms.gle/1DzWKv6dPRy6Dhzf7", external: true },
-                ].map((item) => (
-                  <button
-                    key={item.label}
-                    onClick={() => {
-                      setMenuOpen(false);
-                      if (item.external) window.open(item.href, "_blank");
-                      else navigate(item.href);
-                    }}
-                    className="text-white text-lg capitalize text-left"
-                  >
-                    {item.label}
-                  </button>
-                ))}
-              </div>
-            )}
-          </nav>
+     <nav
+  className={`fixed top-0 w-full z-40 transition-all duration-500 ${
+    scrollY > 50
+      ? "bg-black/80 backdrop-blur-2xl border-b border-purple-500/20"
+      : "bg-transparent"
+  }`}
+>
+  <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+    {/* Logo */}
+    <div className="cursor-pointer" onClick={() => navigate("/")}>
+      <img
+        src="https://res.cloudinary.com/dlk5kntmy/image/upload/v1755083075/logo-removebg-preview_xljgwo.png"
+        alt="Digital GenZ"
+        className="h-30 w-auto"
+      />
+    </div>
+
+    {/* Desktop Menu */}
+    <div className="hidden md:flex space-x-8">
+      {[
+        { label: "home", href: "/" },
+        { label: "about", href: "#about-us" },
+        { label: "services", href: "/services" },
+        // { label: "vlog", href: "/vlog" },
+        { label: "collaboration", href: "/collaboration" },
+        { label: "join", href: "https://forms.gle/1DzWKv6dPRy6Dhzf7", external: true },
+      ].map((item) => (
+        <button
+          key={item.label}
+          onClick={() => {
+            if (item.external) {
+              window.open(item.href, "_blank");
+            } else {
+              navigate(item.href);
+            }
+          }}
+          className={`capitalize relative px-4 py-2 transition-all duration-300 hover:scale-110 ${
+            activeSection === item.label
+              ? "text-white"
+              : "text-gray-400 hover:text-white"
+          }`}
+        >
+          {item.label}
+          {activeSection === item.label && !item.external && (
+            <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-purple-500 to-pink-500 animate-pulse" />
+          )}
+        </button>
+      ))}
+    </div>
+
+    {/* Mobile Menu Button */}
+    <div className="md:hidden">
+      <button
+        onClick={() => setMenuOpen(!menuOpen)}
+        className="text-white text-3xl focus:outline-none"
+      >
+        {menuOpen ? <HiX /> : <HiMenu />}
+      </button>
+    </div>
+  </div>
+
+  {/* Mobile Menu */}
+  {menuOpen && (
+    <div className="md:hidden bg-black/90 backdrop-blur-2xl px-6 py-4 flex flex-col space-y-4">
+      {[
+        { label: "home", href: "/" },
+        { label: "about", href: "#about-us" },
+        { label: "services", href: "/services" },
+        { label: "vlog", href: "/vlog" },
+        { label: "collaboration", href: "/collaboration" },
+        { label: "join", href: "https://forms.gle/1DzWKv6dPRy6Dhzf7", external: true },
+      ].map((item) => (
+        <button
+          key={item.label}
+          onClick={() => {
+            setMenuOpen(false);
+            if (item.external) window.open(item.href, "_blank");
+            else navigate(item.href);
+          }}
+          className="text-white text-lg capitalize text-left"
+        >
+          {item.label}
+        </button>
+      ))}
+    </div>
+  )}
+</nav>
 
 
       {/* Hero Section */}
-      <section id="home" className="mt-{70vh} min-h-screen flex items-center justify-center relative overflow-hidden bg-red">
+      <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-{30vh}">
         {/* Dynamic Background */}
         <div className="absolute inset-0 bg-gradient-to-br from-purple-900 via-blue-900 to-black">
           {/* Animated mesh gradient */}
@@ -242,11 +241,10 @@ const DigitalZenze = () => {
               About Digital GenZ
             </h2>
             <p className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-             As a cutting-edge digital marketing platform, we deliver
-              <span className="text-purple-400 font-semibold"> innovative solutions </span>
-             designed to elevate your
-             <span className="text-purple-400 font-semibold"> brand, </span> 
-              connect you with your audience, and drive meaningful business growth 
+            We are your all-in-one digital growth partner, whether you are a start-up looking to grow, a business owner ready to go digital, or someone wanting to kick-start your career,
+             we’re here to make it happen!  
+             <br></br>
+             At<span className="text-purple-400 font-semibold"> Digital GenZ </span> we are here to help your brand stand out the most where it matters- online. Solutions that are effective and tailored to you where you turn clicks into real results.
             </p>
           </div>
         </div>
@@ -278,9 +276,8 @@ const DigitalZenze = () => {
                 <div className="relative">
                   <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-2xl blur" />
                   <p className="relative text-xl leading-relaxed p-6 bg-black/30 backdrop-blur-xl rounded-2xl border border-white/10">
-                    To be the leading digital innovation company that empowers businesses and individuals 
-                    to thrive in the digital age. We envision a world where technology seamlessly 
-                    integrates with human creativity to solve real-world challenges.
+                    Whether it’s building a brand, launching a career or finding new income streams we are here to empower the next
+                     generation of innovators, entrepreneurs and professionals with the digital skills they need to build their way online.
                   </p>
                 </div>
               </div>
@@ -295,9 +292,9 @@ const DigitalZenze = () => {
                 <div className="relative">
                   <div className="absolute inset-0 bg-gradient-to-r from-yellow-500/20 to-orange-500/20 rounded-2xl blur" />
                   <p className="relative text-xl leading-relaxed p-6 bg-black/30 backdrop-blur-xl rounded-2xl border border-white/10">
-                    To deliver exceptional digital experiences through innovative technology solutions, 
-                    creative design, and strategic thinking. We are committed to helping our clients 
-                    achieve their goals while pushing the boundaries of what's possible. 
+                  Our mission is to bridge the gap between creativity and technology, helping people and businesses grow together 
+                  through impactful digital marketing solutions, hands-on learning and collaborative opportunities that unlocks 
+                  sustainable success.
                   </p>
                 </div>
               </div>
@@ -355,7 +352,7 @@ const DigitalZenze = () => {
               },
               { 
                 icon: Users, 
-                title: "commitment",
+                title: "Commitment",
                 desc: "Teamwork and partnership drive our success and innovation.", 
                 gradient: "from-blue-500 to-purple-500",
               },
@@ -417,28 +414,28 @@ const DigitalZenze = () => {
           
           <div className="grid lg:grid-cols-3 gap-8 mb-16">
             {[
-              {
-                icon: Code,
-                title: "Cutting-Edge Technology",
-                description: "We leverage the latest technologies and frameworks to build future-ready solutions that scale with your business.",
-                gradient: "from-purple-500 to-violet-500",
-                stats: "99.9% Uptime"
-              },
-              {
-                icon: Smartphone,
-                title: "Mobile-First Approach",
-                description: "Every solution we create is designed with mobile users in mind, ensuring seamless experiences across all devices.",
-                gradient: "from-pink-500 to-rose-500",
-                stats: "100% Responsive"
-              },
-              {
-                icon: Globe,
-                title: "Global Reach",
-                description: "Our digital solutions help businesses expand their reach globally with localized strategies and universal appeal.",
-                gradient: "from-cyan-500 to-blue-500",
-                stats: "50+ Countries"
-              }
-            ].map((feature, index) => (
+  {
+    icon: DollarSign, 
+    title: "● Affordable",
+    description: "Quality marketing shouldn’t cost a fortune, and with us, it doesn’t.",
+    gradient: "from-purple-500 to-violet-500",
+    stats: "99.9% Uptime"
+  },
+  {
+    icon: Users, 
+    title: "● Community",
+    description:"You’re not just hiring a service, you’re joining a network of people who want to see you succeed.",
+    gradient: "from-pink-500 to-rose-500",
+    stats: "100% Responsive"
+  },
+  {
+    icon: BarChart3, 
+    title: "● Decisions backed by data",
+    description: "We don’t do guesswork - we use real insights to create strategies that work.",
+    gradient: "from-cyan-500 to-blue-500",
+    stats: "50+ Countries"
+  }
+].map((feature, index) => (
               <div key={index} className="group relative">
                 <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500" />
                 <div className="relative bg-black/40 backdrop-blur-xl rounded-3xl p-8 border border-white/10 group-hover:border-white/30 transition-all duration-500 hover:transform hover:scale-105">
