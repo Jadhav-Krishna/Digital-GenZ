@@ -234,8 +234,8 @@ const CollaborationPage = () => {
                 </h3>
                 <div className="space-y-4">
                   {[
-                    { icon: Mail, label: "Email", value: "hello@digitalzenz.com" },
-                    { icon: Phone, label: "Phone", value: "+91 12345 67890" },
+                    { icon: Mail, label: "Email", value: "digitalgenzminds@gmail.com" },
+                    { icon: Phone, label: "Phone", value: "7987731475" },
                     { icon: MapPin, label: "Location", value: "Bhopal, Madhya Pradesh, IN" }
                   ].map((contact, index) => (
                     <div key={index} className="flex items-center space-x-4 group hover:scale-105 transition-transform duration-300">
