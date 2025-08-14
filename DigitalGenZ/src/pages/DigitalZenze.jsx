@@ -58,93 +58,93 @@ const DigitalZenze = () => {
       />
 
       {/* Navigation */}
-     <nav
-  className={`fixed top-0 w-full z-40 transition-all duration-500 ${
-    scrollY > 50
-      ? "bg-black/80 backdrop-blur-2xl border-b border-purple-500/20"
-      : "bg-transparent"
-  }`}
->
-  <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-    {/* Logo */}
-    <div className="cursor-pointer" onClick={() => navigate("/")}>
-      <img
-        src="https://res.cloudinary.com/dlk5kntmy/image/upload/v1755083075/logo-removebg-preview_xljgwo.png"
-        alt="Digital GenZ"
-        className="h-{2vh} w-auto"
-      />
-    </div>
-
-    {/* Desktop Menu */}
-    <div className="hidden md:flex space-x-8">
-      {[
-        { label: "home", href: "/" },
-        { label: "about", href: "#about-us" },
-        { label: "services", href: "/services" },
-        // { label: "vlog", href: "/vlog" },
-        { label: "collaboration", href: "/collaboration" },
-        { label: "join", href: "https://forms.gle/1DzWKv6dPRy6Dhzf7", external: true },
-      ].map((item) => (
-        <button
-          key={item.label}
-          onClick={() => {
-            if (item.external) {
-              window.open(item.href, "_blank");
-            } else {
-              navigate(item.href);
-            }
-          }}
-          className={`capitalize relative px-4 py-2 transition-all duration-300 hover:scale-110 ${
-            activeSection === item.label
-              ? "text-white"
-              : "text-gray-400 hover:text-white"
-          }`}
-        >
-          {item.label}
-          {activeSection === item.label && !item.external && (
-            <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-purple-500 to-pink-500 animate-pulse" />
-          )}
-        </button>
-      ))}
-    </div>
-
-    {/* Mobile Menu Button */}
-    <div className="md:hidden">
-      <button
-        onClick={() => setMenuOpen(!menuOpen)}
-        className="text-white text-3xl focus:outline-none"
-      >
-        {menuOpen ? <HiX /> : <HiMenu />}
-      </button>
-    </div>
-  </div>
-
-  {/* Mobile Menu */}
-  {menuOpen && (
-    <div className="md:hidden bg-black/90 backdrop-blur-2xl px-6 py-4 flex flex-col space-y-4">
-      {[
-        { label: "home", href: "/" },
-        { label: "about", href: "#about-us" },
-        { label: "services", href: "/services" },
-        // { label: "vlog", href: "/vlog" },
-        { label: "collaboration", href: "/collaboration" },
-        { label: "join", href: "https://forms.gle/1DzWKv6dPRy6Dhzf7", external: true },
-      ].map((item) => (
-        <button
-          key={item.label}
-          onClick={() => {
-            setMenuOpen(false);
-            if (item.external) window.open(item.href, "_blank");
-            else navigate(item.href);
-          }}
-          className="text-white text-lg capitalize text-left"
-        >
-          {item.label}
-        </button>
-      ))}
-    </div>
-  )}
-</nav>
+    <nav
+            className={`fixed top-0 w-full z-40 transition-all duration-500 ${
+              scrollY > 50
+                ? "bg-black/80 backdrop-blur-2xl border-b border-purple-500/20"
+                : "bg-transparent"
+            }`}
+          >
+            <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+              {/* Logo */}
+              <div className="cursor-pointer" onClick={() => navigate("/")}>
+                <img
+                  src="https://res.cloudinary.com/dlk5kntmy/image/upload/v1755083075/logo-removebg-preview_xljgwo.png"
+                  alt="Digital GenZ"
+                  className="h-30 w-auto"
+                />
+              </div>
+          
+              {/* Desktop Menu */}
+              <div className="hidden md:flex space-x-8">
+                {[
+                  { label: "home", href: "/" },
+                  { label: "about", href: "#about-us" },
+                  { label: "services", href: "/services" },
+                  // { label: "vlog", href: "/vlog" },
+                  { label: "collaboration", href: "/collaboration" },
+                  { label: "join", href: "https://forms.gle/1DzWKv6dPRy6Dhzf7", external: true },
+                ].map((item) => (
+                  <button
+                    key={item.label}
+                    onClick={() => {
+                      if (item.external) {
+                        window.open(item.href, "_blank");
+                      } else {
+                        navigate(item.href);
+                      }
+                    }}
+                    className={`capitalize relative px-4 py-2 transition-all duration-300 hover:scale-110 ${
+                      activeSection === item.label
+                        ? "text-white"
+                        : "text-gray-400 hover:text-white"
+                    }`}
+                  >
+                    {item.label}
+                    {activeSection === item.label && !item.external && (
+                      <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-purple-500 to-pink-500 animate-pulse" />
+                    )}
+                  </button>
+                ))}
+              </div>
+          
+              {/* Mobile Menu Button */}
+              <div className="md:hidden">
+                <button
+                  onClick={() => setMenuOpen(!menuOpen)}
+                  className="text-white text-3xl focus:outline-none"
+                >
+                  {menuOpen ? <HiX /> : <HiMenu />}
+                </button>
+              </div>
+            </div>
+          
+            {/* Mobile Menu */}
+            {menuOpen && (
+              <div className="md:hidden bg-black/90 backdrop-blur-2xl px-6 py-4 flex flex-col space-y-4">
+                {[
+                  { label: "home", href: "/" },
+                  { label: "about", href: "#about-us" },
+                  { label: "services", href: "/services" },
+                  { label: "vlog", href: "/vlog" },
+                  { label: "collaboration", href: "/collaboration" },
+                  { label: "join", href: "https://forms.gle/1DzWKv6dPRy6Dhzf7", external: true },
+                ].map((item) => (
+                  <button
+                    key={item.label}
+                    onClick={() => {
+                      setMenuOpen(false);
+                      if (item.external) window.open(item.href, "_blank");
+                      else navigate(item.href);
+                    }}
+                    className="text-white text-lg capitalize text-left"
+                  >
+                    {item.label}
+                  </button>
+                ))}
+              </div>
+            )}
+          </nav>
 
 
       {/* Hero Section */}
