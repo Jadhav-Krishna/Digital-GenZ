@@ -149,7 +149,7 @@ const DigitalGenZVlog = () => {
               { label: "home", href: "/" },
               { label: "about", href: "#about-us" },
               { label: "services", href: "/services" },
-              { label: "vlog", href: "/vlog" },
+              // { label: "vlog", href: "/vlog" },
               { label: "collaboration", href: "/collaboration" },
               { label: "join", href: "https://forms.gle/1DzWKv6dPRy6Dhzf7", external: true },
             ].map((item) => (
