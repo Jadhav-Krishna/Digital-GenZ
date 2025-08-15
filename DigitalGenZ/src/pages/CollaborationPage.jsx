@@ -144,7 +144,7 @@ const CollaborationPage = () => {
             { label: "home", href: "/" },
             { label: "about", href: "#about-us" },
             { label: "services", href: "/services" },
-            { label: "vlog", href: "/vlog" },
+            // { label: "vlog", href: "/vlog" },
             { label: "collaboration", href: "/collaboration" },
             { label: "join", href: "https://forms.gle/1DzWKv6dPRy6Dhzf7", external: true },
           ].map((item) => (
@@ -236,7 +236,7 @@ const CollaborationPage = () => {
                   {[
                     { icon: Mail, label: "Email", value: "digitalgenzminds@gmail.com" },
                     { icon: Phone, label: "Phone", value: "7987731475" },
-                    { icon: MapPin, label: "Location", value: "Bhopal, Madhya Pradesh, IN" }
+                    { icon: MapPin, label: "Location", value: "Bhopal,India" }
                   ].map((contact, index) => (
                     <div key={index} className="flex items-center space-x-4 group hover:scale-105 transition-transform duration-300">
                       <div className="p-3 rounded-xl bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-white/10">

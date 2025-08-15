@@ -274,7 +274,7 @@ const ServicesCoursesPage = () => {
             { label: "home", href: "/" },
             { label: "about", href: "#about-us" },
             { label: "services", href: "/services" },
-            { label: "vlog", href: "/vlog" },
+            // { label: "vlog", href: "/vlog" },
             { label: "collaboration", href: "/collaboration" },
             { label: "join", href: "https://forms.gle/1DzWKv6dPRy6Dhzf7", external: true },
           ].map((item) => (
@@ -351,7 +351,7 @@ const ServicesCoursesPage = () => {
       </section>
 
       {/* Services Section */}
-      {activeTab === 'services' && (
+   {activeTab === 'services' && (
   <section className="py-20 bg-gradient-to-br from-gray-900 to-black relative overflow-hidden">
     <div className="absolute inset-0">
       <div className="absolute top-10 right-10 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl" />
@@ -375,7 +375,8 @@ const ServicesCoursesPage = () => {
             className="group relative cursor-pointer"
             onClick={() => setSelectedService(selectedService === service.id ? null : service.id)}
           >
-            <div className={`absolute inset-0 bg-gradient-to-r ${service.gradient} rounded-2xl blur opacity-20 group-hover:opacity-40 transition-opacity duration-300`} />
+            {/* Gradient Background (fixed: removed blur) */}
+            <div className={`absolute inset-0 bg-gradient-to-r ${service.gradient} rounded-2xl opacity-20 group-hover:opacity-40 transition-opacity duration-300`} />
             
             {/* Card Content */}
             <div className="relative bg-black/40 backdrop-blur-xl rounded-2xl p-6 border border-white/10 group-hover:border-white/30 transition-all duration-500 hover:transform hover:scale-105">
@@ -407,17 +408,13 @@ const ServicesCoursesPage = () => {
                 </div>
               )}
             </div>
-
-            {/* Overlay "Coming Soon" */}
-            <div className="absolute inset-0 bg-black/70 rounded-2xl flex items-center justify-center">
-              <span className="text-white text-lg font-bold">Coming Soon</span>
-            </div>
           </div>
         ))}
       </div>
     </div>
   </section>
 )}
+
 
 
       {/* Courses Section */}

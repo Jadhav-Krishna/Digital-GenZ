@@ -125,7 +125,7 @@ const DigitalZenze = () => {
         { label: "home", href: "/" },
         { label: "about", href: "#about-us" },
         { label: "services", href: "/services" },
-        { label: "vlog", href: "/vlog" },
+        // { label: "vlog", href: "/vlog" },
         { label: "collaboration", href: "/collaboration" },
         { label: "join", href: "https://forms.gle/1DzWKv6dPRy6Dhzf7", external: true },
       ].map((item) => (
@@ -200,7 +200,7 @@ const DigitalZenze = () => {
               Innovating Tomorrow's Digital Solutions Today
             </p>
             <p className="text-lg text-purple-300 animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
-              Where digital marketing contributes to business growth 
+              Where digital marketing contributes to your business growth 
             </p>
           </div>
           
@@ -241,7 +241,7 @@ const DigitalZenze = () => {
               About Digital GenZ
             </h2>
             <p className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-            We are your all-in-one digital growth partner, whether you are a start-up looking to grow, a business owner ready to go digital, or someone wanting to kick-start your career,
+            We are your all-in-one digital growth partner, whether you are a start-up looking for bussiness growth, a business owner ready to go digital, or someone wanting to kick-start your career in digital marketing,
              we’re here to make it happen!  
              <br></br>
              At<span className="text-purple-400 font-semibold"> Digital GenZ </span> we are here to help your brand stand out the most where it matters- online. Solutions that are effective and tailored to you where you turn clicks into real results.
@@ -276,8 +276,7 @@ const DigitalZenze = () => {
                 <div className="relative">
                   <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-2xl blur" />
                   <p className="relative text-xl leading-relaxed p-6 bg-black/30 backdrop-blur-xl rounded-2xl border border-white/10">
-                    Whether it’s building a brand, launching a career or finding new income streams we are here to empower the next
-                     generation of innovators, entrepreneurs and professionals with the digital skills they need to build their way online.
+                    To develop an entrepreneurial mindset with financial freedom
                   </p>
                 </div>
               </div>
@@ -292,9 +291,7 @@ const DigitalZenze = () => {
                 <div className="relative">
                   <div className="absolute inset-0 bg-gradient-to-r from-yellow-500/20 to-orange-500/20 rounded-2xl blur" />
                   <p className="relative text-xl leading-relaxed p-6 bg-black/30 backdrop-blur-xl rounded-2xl border border-white/10">
-                  Our mission is to bridge the gap between creativity and technology, helping people and businesses grow together 
-                  through impactful digital marketing solutions, hands-on learning and collaborative opportunities that unlocks 
-                  sustainable success.
+                 To make your business visible by moving from offline to online
                   </p>
                 </div>
               </div>
@@ -424,13 +421,13 @@ const DigitalZenze = () => {
   {
     icon: Users, 
     title: "● Community",
-    description:"You’re not just hiring a service, you’re joining a network of people who want to see you succeed.",
+    description:"You’re not just hiring a service, you’re joining a network of people who want to see you grow.",
     gradient: "from-pink-500 to-rose-500",
     stats: "100% Responsive"
   },
   {
     icon: BarChart3, 
-    title: "● Decisions backed by data",
+    title: "● Performance",
     description: "We don’t do guesswork - we use real insights to create strategies that work.",
     gradient: "from-cyan-500 to-blue-500",
     stats: "50+ Countries"
