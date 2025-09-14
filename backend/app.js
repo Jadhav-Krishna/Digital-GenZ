@@ -12,11 +12,13 @@ const hpp = require("hpp");
 const cookieParser = require("cookie-parser");
 const axios = require("axios");
 require("dotenv").config();
-const db=require("./config/db");
+
+const db = require("./config/db");
 db();
 
+const application = require("./routes/applicationRoutes");
 
-const { connectRedis } = require("./config/redis")
+const { connectRedis } = require("./config/redis");
 connectRedis();
 
 const app = express();
@@ -26,7 +28,7 @@ axios.defaults.withCredentials = true;
 // ✅ CORS for local dev
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: "http://localhost:5173",
     credentials: true,
   })
 );
@@ -38,7 +40,7 @@ app.use(
     resave: false,
     saveUninitialized: false,
     cookie: {
-      secure: false, // ❌ no HTTPS locally
+      secure: false, // ❌ HTTPS only in production
       httpOnly: true,
       sameSite: "lax",
       maxAge: 1000 * 60 * 60 * 24, // 1 day
@@ -50,10 +52,15 @@ app.use(
 // app.use(passport.initialize());
 // app.use(passport.session());
 
-// Security middleware
+app.use("/uploads", express.static("uploads"));
+
+// 🔐 Security middleware
 app.use(helmet());
 
-// Rate limiting
+// 📜 Logging
+app.use(morgan("dev"));
+
+// 🚦 Rate limiting
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 200,
@@ -61,21 +68,27 @@ const limiter = rateLimit({
 });
 app.use("/api/", limiter);
 
-// Body parsing
+// 📦 Body parsing
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 app.use(cookieParser());
 
-// Data sanitization (Express 5 safe config)
-app.use(
-  mongoSanitize({
-    replaceWith: "_",
-  })
-);
+// 🛡️ Data sanitization (patched for Express 4.19+)
+app.use((req, res, next) => {
+  if (req.body) mongoSanitize.sanitize(req.body, { replaceWith: "_" });
+  if (req.params) mongoSanitize.sanitize(req.params, { replaceWith: "_" });
+  // ⚠️ Skipping req.query because it's read-only in new Express
+  next();
+});
 
+// 🛑 Prevent HTTP parameter pollution
 app.use(hpp());
+
+// 📦 Response compression
 app.use(compression());
-app.use(morgan("dev"));
+
+// ROUTES
+app.use("/api/applications", application);
 
 // Health check routes
 app.get("/health", (req, res) => {
@@ -86,7 +99,7 @@ app.get("/api/health", (req, res) => {
   res.status(200).json({ status: "healthy", timestamp: new Date().toISOString() });
 });
 
-
+// 🚀 Start server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`🚀 Server running at http://localhost:${PORT}`);
