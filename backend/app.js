@@ -17,6 +17,9 @@ const db = require("./config/db");
 db();
 
 const application = require("./routes/applicationRoutes");
+const projectRoutes = require("./routes/projectRoutes");
+const authRoutes = require('./routes/authRoutes');
+
 
 const { connectRedis } = require("./config/redis");
 connectRedis();
@@ -89,6 +92,8 @@ app.use(compression());
 
 // ROUTES
 app.use("/api/applications", application);
+app.use("/api/project", projectRoutes);
+app.use('/api/auth', authRoutes);
 
 // Health check routes
 app.get("/health", (req, res) => {

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Upload, User, Phone, Mail, GraduationCap, Camera, FileText, Star, Sparkles, ArrowRight, ChevronDown } from 'lucide-react';
-
+import Navbar from './Navbar'
 const DigitalGenZApplicationForm = () => {
   const [formData, setFormData] = useState({
     studentName: '',
@@ -120,6 +120,7 @@ const DigitalGenZApplicationForm = () => {
 
   return (
     <div className="min-h-screen bg-black overflow-x-hidden">
+      <Navbar />
       {/* Background matching your original theme */}
       <div className="absolute inset-0 bg-gradient-to-br from-purple-900 via-blue-900 to-black">
         {/* Animated mesh gradient */}

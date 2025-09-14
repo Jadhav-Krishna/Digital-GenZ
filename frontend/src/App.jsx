@@ -5,6 +5,7 @@ import DigitalZenze from './pages/DigitalZenze';
  import CollaborationPage from './pages/CollaborationPage'
  import DigitalGenZVlog from "./pages/DigitalGenZVlog"
  import Form from './components/DigitalGenZApplicationForm';
+ import Login from "./components/DigitalGenZLoginPage"
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
           <Route path="/collaboration" element={<CollaborationPage />} />
            <Route path="/vlog" element={<DigitalGenZVlog />} />
           <Route path="/join" element={<Form />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </div>
     </Router>
